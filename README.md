@@ -6,6 +6,15 @@ A universal, open, and elastic meta skill ecosystem that decomposes human demand
 This repository is the official core of the MetaSkillBase open-source community, providing a complete set of standards, tools, and community rules for building, classifying, and reusing meta skills across all bot/agent ecosystems.
 
 
+### Current Status
+MetaSkill Base Core is in early development stage.
+- Framework and architecture: complete
+- Core specification: defined
+- Meta Skill collection: in progress
+- Cutter engine: under development
+- Pre-release community project: contributions welcome
+
+
 ### Core Value
 1. Elastic Classification: Classification as inspiration, not restriction—no rejection, no audit, only organization.
 2. Dual Contributor System: Equal respect for Demand Contributors (DC) and Skill Implementers (SI).

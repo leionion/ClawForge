@@ -86,11 +86,11 @@ Therefore, we define:
 We focus on the OpenClaw ecosystem. We follow its skill system and standards to build and provide Meta Skills, and contribute to the OpenClaw community.
 
 ### Current Status
-- Framework and architecture: complete
+- Framework and architecture: defined
 - Core specification: defined
-- Meta Skill collection: in progress
-- Cutter engine: stable (P0 completed)
-- Community: active and growing
+- Meta Skill collection: in progress (仓库建设中)
+- Cutter engine: in development
+- Community: welcome contributors
 
 ### Skill Hierarchy
 ```

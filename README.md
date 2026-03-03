@@ -88,7 +88,7 @@ We focus on the OpenClaw ecosystem. We follow its skill system and standards to 
 ### Current Status
 - Framework and architecture: defined
 - Core specification: defined
-- Meta Skill collection: in progress (仓库建设中)
+- Meta Skill collection: in progress (30 HCI skills added)
 - Cutter engine: in development
 - Community: welcome contributors
 

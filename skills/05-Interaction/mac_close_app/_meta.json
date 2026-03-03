@@ -1,0 +1,9 @@
+{
+  "openclaw": {
+    "emoji": "❌",
+    "category": "automation",
+    "tags": ["mac", "app", "close", "quit"]
+  },
+  "contributor": "MetaSkillBase",
+  "source": "openclaw_community"
+}

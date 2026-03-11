@@ -1,157 +1,152 @@
-# MetaSkillBase-Core
-## Meta Skill Library for Demand Decomposition & OpenClaw Ecosystem
+# ⚡ ClawForge
 
-A universal, open, and elastic meta skill ecosystem that decomposes human demands into reusable atomic meta skills — **One for Human, One for Bot**.
+**AI Trading Platform — Skill Forge, Chat, BankrBot, Polyclaw, Alpaca, Kalshi, Whale Tracking, Portfolio. Powered by OpenClaw.**
 
----
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-ECOSYSTEM-blue)](https://openclaw.ai)
+[![Python](https://img.shields.io/badge/Python-3.10+-green)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/UI-Streamlit-red)](https://streamlit.io)
 
-## One for Human, One for Bot — The Deeper Meaning
-
-**We believe: Every product in the world — both software and hardware — will need two kinds of "instructions":**
-
-1. **One for Human**: User manual, guides, documentation
-2. **One for Bot**: Machine-readable instructions that AI can understand and execute
-
-This is not just about documentation. This is about **making every product AI-controllable**.
-
-**Real example:**
-- Your air conditioner has HomeKit
-- **One for Human**: Remote control manual
-- **One for Bot**: Air conditioner Meta Skill → OpenClaw can control it
-
-**The vision:** A world where every product has both — readable by humans, executable by AI. This is the future Meta Skill enables.
+ClawForge bridges natural language and executable AI capabilities. Describe what you want — backtest a strategy, backup memory, automate workflows, trade across stocks and crypto — and get it done with **OpenClaw** agents and the **Skill Forge** demand decomposition engine.
 
 ---
 
-## The Real Story: Why We Need Meta Skills
+## 🎯 Vision
 
-**Problem:**
-I asked my Mac mini to upgrade OpenClaw. It said: *"I can't. No permission."*
+We are building the **default platform for customizable AI trading agents**. Our mission:
 
-**Conversation:**
-> **OpenClaw:** I've run Terminal. You can input the password now.
-> 
-> **Me:** I can't see where to input the password. You need to activate Terminal in a way that I can see.
-> 
-> **OpenClaw:** Got it! Using `mac_activate` to bring Terminal to the foreground.
-> 
-> **Me:** Now I can see it. Let me enter the password... Done!
-> 
-> **OpenClaw:** Upgrade complete! ✅
+- **Democratize AI agent development** — Make it possible for traders and developers to build, extend, and deploy customized OpenClaw agents without deep infrastructure work
+- **Unify trading workflows** — One interface for stocks, crypto, prediction markets, on-chain intelligence, and automation
+- **Open collaboration** — Grow a community of contributors who build, share, and improve skills and agents together
 
-**Result:** OpenClaw upgraded through human-machine collaboration.
+ClawForge is not a closed product. It is an **actively developed open platform** designed for extension, contribution, and collaboration.
 
 ---
 
-### Why This Matters
+## ✨ What's Inside
 
-1. **Machines prefer background silent execution** — but AI solving real problems often requires human-machine collaboration
-2. **This is just ONE case** — Mac operations need: activate app, run terminal, adjust volume, take screenshot, lock screen... → **30+ Meta Skills**
-3. **The finer the decomposition, the easier the development**
-   - Complex demand → Simple Meta Skills → Easy to build, easy to combine
-4. **Human's role:** Describe the demand
-   - **Meta Skills' role:** Provide atomic capabilities
-   - **OpenClaw's role:** Execute and solve
+| Area | Features |
+|------|----------|
+| **Skill Forge** | Decompose natural demands → atomic skills (keyword + Chutes LLM). Run locally or send to OpenClaw |
+| **Chat** | Talk to your OpenClaw agent. Full tools, skills, memory. Fallback to direct Groq/Chutes when gateway is busy |
+| **BankrBot** | Crypto spot, DeFi, 5 chains |
+| **Polyclaw** | Polymarket prediction markets (CLOB) |
+| **Alpaca** | US stocks, ETFs, options |
+| **Kalshi** | CFTC prediction markets |
+| **Whale Tracking** | On-chain intelligence, Base |
+| **DCA** | Dollar Cost Averaging via crypto-trader |
+| **Price Alerts** | Crypto alerts, Telegram/Discord |
+| **Portfolio** | Cross-asset monitoring, drift detection, rebalancing |
+| **Status** | OpenClaw CLI, Gateway, skills dashboard |
 
----
-
-## Our Vision
-
-**We believe:**
-- Every human — regardless of technical knowledge — should be able to ask OpenClaw to solve problems.
-- No need to understand code, commands, or systems.
-- **You only need to describe what you want.**
-
-**Through continuous decomposition (Cutter):**
-```
-Your Demand → Cutter → Atomic Meta Skills → OpenClaw Executes → Problem Solved
-```
-
-**The result:**
-- **Humans** focus on *describing needs*
-- **Meta Skills** provide *atomic capabilities* (basic skill units)
-- **OpenClaw** handles *execution*
-- Every human's problem can be solved
-
-**This is our vision:** A world where anyone can change the world through OpenClaw — not by knowing technology, but by having the willingness to solve problems.
+**Standalone skills:** `memory_backup`, `strategy_backtest` run without OpenClaw.  
+**OpenClaw skills:** BankrBot, Polyclaw, DCA, Price Alerts use the OpenClaw gateway and ClawHub skills.
 
 ---
 
-OpenClaw has built a complete Skill system.
-We found that most skills can be further decomposed into finer, reusable, professional basic units.
+## 🚀 Quick Start
 
-Therefore, we define:
-- **Meta Skill**: Supply-oriented, developer-facing, atomic, reusable finest-grained functional component.
-
-We focus on the OpenClaw ecosystem. We follow its skill system and standards to build and provide Meta Skills, and contribute to the OpenClaw community.
-
-### Current Status
-- Framework and architecture: defined
-- Core specification: defined
-- Meta Skill collection: in progress (30 HCI skills added)
-- Cutter engine: in development
-- Community: welcome contributors
-
-### Skill Hierarchy
-```
-Human Demand
-    ↓
-OpenClaw
-    ↓
-Meta Skill       ←───── MetaSkillBase-Core
-```
-
-- **Meta Skill**: Finest-grained reusable functional component.
-
-### Core Value
-1. **Supply-Driven**: Every Meta Skill is a valuable "supply" — the more, the better
-2. **Demand-Responsive**: Every demand can be decomposed and fulfilled
-3. **Open Collaboration**: Anyone can contribute — no rejection, no audit
-4. **Human-Bot Symbiosis**: Humans describe needs; machines execute solutions
-
-### Repository Structure
-```
-MetaSkillBase-Core/
-├── skills/                    # Core meta skill library
-│   ├── 00-Unclassified/
-│   ├── 01-Base/
-│   ├── 02-Device/
-│   ├── 03-Manual/
-│   ├── 04-Process/
-│   └── 05-Interaction/
-├── core/                     # Cutter Engine
-├── prompts/                  # Prompts for Cutter
-├── data/                     # Ecosystem data
-└── docs/                     # Documentation
-```
-
-### Cutter Engine
-A demand decomposition and skill search tool for OpenClaw, mapping human natural language demands into atomic Meta Skills.
-
-**Flow:**
-```
-User Demand → Cutter →
-  1. Search OpenClaw
-  2. Query local Skills
-  3. Search MetaSkillBase-Core → Meta Skills
-  4. Submit Demand (if missing)
-```
-
-**Output:**
-- Existing Meta Skills that match the demand
-- Missing Meta Skills that need development
-
-### Quick Start
 ```bash
-cd MetaSkillBase-Core
-pip install -r requirements.txt
-python -m core.cutter "Your human demand here" --model gpt
+git clone https://github.com/Rezzecup/ClawForge.git
+cd ClawForge
+pip install -e .
+cp .env.example .env   # Add GROQ_API_KEY (free at console.groq.com)
+streamlit run web_app.py --server.port 8503
 ```
 
-### Community Rules
-- No Rejection: Any skill or demand can be submitted.
-- Open Collaboration: Fork, PR, Issue.
-- Quality Focus: Useful and reliable.
+**With OpenClaw (full agent):**
+```bash
+./scripts/setup_openclaw.sh
+./scripts/start_gateway.sh   # or: pm2 start ecosystem.config.cjs
+```
 
-### License
-Apache License 2.0
+---
+
+## 🗺️ Roadmap
+
+### v0.3 (Current — Actively Developing)
+- [x] Skill Forge with keyword + Chutes LLM decomposition
+- [x] Chat with OpenClaw + direct LLM fallback
+- [x] Gateway resilience (model fallbacks, env loading)
+- [x] Trading pages: BankrBot, Polyclaw, Alpaca, Kalshi, Whale Tracking, DCA, Price Alerts, Portfolio
+- [x] metaskillbase skill for OpenClaw
+- [ ] More standalone skills (file ops, system)
+- [ ] Improved error handling and diagnostics
+
+### v0.4 (Next)
+- [ ] Multi-agent routing (specialist agents per domain)
+- [ ] Skill marketplace / ClawHub integration in UI
+- [ ] Session persistence and history
+- [ ] Webhook triggers for alerts and automation
+- [ ] Custom skill builder (no-code templates)
+
+### v0.5+
+- [ ] Mobile-friendly PWA
+- [ ] Plugin system for third-party skills
+- [ ] Community skill registry and ratings
+- [ ] Self-hosted and cloud deployment options
+- [ ] API for external integrations
+
+---
+
+## 🤝 Collaborate With Us
+
+We are **actively looking for collaborators** who want to build customized OpenClaw AI agents.
+
+Whether you are a:
+- **Trader** wanting to automate strategies
+- **Developer** building new skills or agents
+- **Researcher** exploring LLM-based decomposition
+- **Contributor** fixing bugs or improving docs
+
+— we want to hear from you.
+
+### Get in Touch
+
+| Platform | Link |
+|----------|------|
+| **GitHub** | [@Rezzecup](https://github.com/Rezzecup) |
+| **Twitter/X** | [@chain_sats](https://twitter.com/chain_sats) |
+| **Telegram** | [AuraTerminal](https://t.me/AuraTerminal) |
+
+**Have a mind to collaborate and build new customized AI agents together?**  
+Reach out via GitHub (Issues, Discussions, or DM) or the links above. We respond to serious proposals and are open to new project ideas, skill contributions, and long-term collaboration.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python 3.10+** — Core logic, skills, Cutter
+- **Streamlit** — Web UI
+- **OpenClaw** — Agent runtime, gateway, skills
+- **Chutes / Groq** — LLM (decomposition, chat)
+- **Pandas, NumPy** — Data (backtest, memory backup)
+
+---
+
+## 📁 Project Structure
+
+```
+ClawForge/
+├── web_app.py           # Streamlit entry
+├── core/
+│   ├── cutter.py       # Demand decomposition (keyword + LLM)
+│   ├── openclaw_gateway.py  # Chat completions, fallback
+│   ├── openclaw_client.py   # CLI integration, invoke agent
+│   ├── ui_components.py     # Theme, cards, sidebar
+│   └── icons.py
+├── pages/               # Streamlit pages (Skill Forge, Chat, BankrBot, …)
+├── skills/              # Standalone skills (memory_backup, strategy_backtest, …)
+├── openclaw-skill/      # metaskillbase skill for OpenClaw
+├── scripts/             # Setup, gateway, fix
+└── config.py, .env.example
+```
+
+---
+
+## 📜 License
+
+See [LICENSE](LICENSE) in the repo.
+
+---
+
+**ClawForge** — *AI Trading · OpenClaw · Built for Collaboration*

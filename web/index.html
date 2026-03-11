@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenClaw Skill Forge — Decompose demands into AI skills. Chat with OpenClaw, quick actions, sessions. For traders and developers. Production-ready.">
+  <meta name="keywords" content="OpenClaw, AI skills, trading backtest, OpenClaw Chat, AI agent, demand decomposition, ClawHub">
+  <meta name="author" content="OpenClaw Skill Forge">
+  <title>OpenClaw Skill Forge — AI Skills Platform for Traders & Developers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-elevated: #12121a;
+      --accent: #6366f1;
+      --accent-dim: #4f46e5;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #27272a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+                  radial-gradient(ellipse 60% 40% at 100% 100%, rgba(139, 92, 246, 0.08), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    main { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem; }
+    header { text-align: center; margin-bottom: 4rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.6s ease;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      animation: fadeIn 0.6s ease 0.1s both;
+    }
+    h1 span { color: var(--accent); }
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 36ch;
+      margin: 0 auto 2.5rem;
+      animation: fadeIn 0.6s ease 0.2s both;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeIn 0.6s ease 0.3s both;
+    }
+    .cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px -12px rgba(99, 102, 241, 0.55); }
+    .cta svg { width: 1.25rem; height: 1.25rem; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: rgba(99, 102, 241, 0.5); transform: translateY(-4px); box-shadow: 0 12px 32px -8px rgba(0,0,0,0.4); }
+    .card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text); }
+    .card p { font-size: 0.9rem; color: var(--text-muted); }
+    .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    .pulse { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .shimmer { background: linear-gradient(90deg, transparent, rgba(99,102,241,0.15), transparent); background-size: 200% 100%; animation: shimmer 3s infinite; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .glow { box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="grid-bg"></div>
+  <main>
+    <header>
+      <div class="badge pulse">Beta</div>
+      <h1>OpenClaw <span>Skill Forge</span></h1>
+      <p class="tagline">Decompose any demand into atomic AI skills. For traders & developers. Powered by OpenClaw.</p>
+      <a href="http://localhost:8503" target="_blank" rel="noopener" class="cta glow" id="cta">
+        Try it now
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted)">Run <code style="background:var(--bg-elevated);padding:0.2rem 0.5rem;border-radius:4px;font-family:JetBrains Mono,monospace">streamlit run web_app.py</code> (port 8503)</p>
+    </header>
+    <section class="features">
+      <div class="card float"><div class="card-icon">📊</div><h3>Skill Forge</h3><p>Decompose demands into atomic skills. Run memory_backup, strategy_backtest, or route to OpenClaw.</p></div>
+      <div class="card float" style="animation-delay:0.5s"><div class="card-icon">💬</div><h3>Chat with OpenClaw</h3><p>Talk to your OpenClaw agent via Gateway HTTP API. Full agent capabilities.</p></div>
+      <div class="card float" style="animation-delay:1s"><div class="card-icon">⚡</div><h3>Quick Actions</h3><p>Trading, dev, lifestyle prompts. One-click execution. Sessions browser, ClawHub.</p></div>
+    </section>
+    <footer>OpenClaw Skill Forge • Beta • Apache 2.0</footer>
+  </main>
+</body>
+</html>

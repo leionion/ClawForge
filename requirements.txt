@@ -1,5 +1,9 @@
-# MetaSkillBase-Core Dependencies
+# OpenClaw Skill Forge Dependencies
 requests>=2.31.0
 python-dotenv>=1.0.0
 pandas>=2.0.0
 numpy>=1.24.0
+# Web UI (Phase 2)
+streamlit>=1.28.0
+# LLM Cutter (Phase 3)
+openai>=1.0.0

@@ -1,0 +1,25 @@
+# OpenClaw Skill Manifest - OpenClaw Skill Forge
+# Publish: clawhub publish ./openclaw-skill --slug metaskillbase --name "OpenClaw Skill Forge" --version 1.0.0 --tags latest
+name: metaskillbase
+version: 1.0.0
+author: metaskillbase
+description: Decompose human demands into atomic meta skills. Run memory_backup, strategy_backtest standalone, or route to OpenClaw skills.
+license: MIT
+
+permissions:
+  - filesystem
+  - network
+  - shell
+
+entryPoint:
+  type: natural
+  prompt: |
+    You are the OpenClaw Skill Forge integration for OpenClaw.
+    When the user describes what they want, first decompose the demand using OpenClaw Skill Forge.
+    Run: metaskill "USER_DEMAND" (or use the Python CutterEngine API).
+    If memory_backup or strategy_backtest are matched, run them via metaskill.
+    For other skills (Mac HCI, device control), use OpenClaw's native skills.
+    Always show the user what skills were matched and what will run.
+
+triggers:
+  keywords: ["decompose", "what skills", "backup memory", "backtest", "meta skill", "metaskillbase"]

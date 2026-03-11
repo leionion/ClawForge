@@ -1,10 +1,13 @@
 """
-MetaSkillBase Core - Cutter Engine
-Demand decomposition and skill extraction engine
+OpenClaw Skill Forge - Cutter Engine
+Demand decomposition and skill extraction.
+Supports: keyword (default), Chutes/OpenAI LLM (--model chutes/gpt).
 """
 
 import json
+import os
 import re
+from pathlib import Path
 
 
 class Decomposer:
@@ -79,11 +82,15 @@ class Decomposer:
             "memory backup": ["memory_backup"],
             "memory restore": ["memory_backup"],
             "backup memory": ["memory_backup"],
+            "backup my": ["memory_backup"],
             "scheduled backup": ["memory_backup"],
+            "chat memory": ["memory_backup"],
         }
         
         for keyword, skills in skill_keywords.items():
-            if keyword in demand_lower:
+            # Word-boundary matching to avoid false positives (e.g. "open" in "OpenClaw", "ip" in "script")
+            pattern = r'\b' + re.escape(keyword) + r'\b'
+            if re.search(pattern, demand_lower):
                 for skill in skills:
                     if skill not in [d["skill"] for d in decomposed]:
                         decomposed.append({
@@ -109,13 +116,52 @@ class Decomposer:
         result += f"## Decomposed Skills\n"
         
         for item in decomposed:
-            result += f"- **{item['skill']}** (confidence: {item['confidence']})\n"
+            result += f"- **{item['skill']}** (confidence: {item.get('confidence', 0)})\n"
             if "matched_keyword" in item:
                 result += f"  - Matched by keyword: {item['matched_keyword']}\n"
+            elif item.get("source") == "llm":
+                result += f"  - From LLM decomposition\n"
             if "original_demand" in item:
                 result += f"  - No matching skills found\n"
         
         return result
+
+
+def _decompose_llm(demand: str, model: str = None) -> list:
+    """LLM-powered decomposition via Chutes or OpenAI. Falls back to [] on error."""
+    try:
+        from config import get_llm_client, has_llm
+        if not has_llm():
+            return []
+        client, default_model = get_llm_client()
+        if not client:
+            return []
+        use_model = model or default_model
+        prompt_path = Path(__file__).parent.parent / "prompts" / "gpt" / "main.txt"
+        prompt_tpl = prompt_path.read_text() if prompt_path.exists() else "Decompose: {human_demand}"
+        prompt = prompt_tpl.replace("{human_demand}", demand)
+        r = client.chat.completions.create(
+            model=use_model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+            max_tokens=1024,
+        )
+        text = r.choices[0].message.content or ""
+        return _parse_llm_skills(text) if text else []
+    except Exception:
+        return []
+
+
+def _parse_llm_skills(text: str) -> list:
+    """Parse LLM output into skill list."""
+    decomposed = []
+    for line in text.split("\n"):
+        m = re.search(r"-\s+(?:\*\*?)?([a-zA-Z0-9_\s-]+?)(?:\*\*?)?(?:\s*:|$)", line)
+        if m:
+            sk = m.group(1).strip().lower().replace(" ", "_").replace("__", "_")
+            if sk and sk not in ("description", "category", "difficulty") and len(sk) > 2:
+                decomposed.append({"skill": sk, "confidence": 0.9, "source": "llm"})
+    return decomposed
 
 
 class CutterEngine:
@@ -125,21 +171,19 @@ class CutterEngine:
         self.decomposer = Decomposer()
         self.version = "1.0.0"
     
-    def process(self, demand, skill_index_content=None):
+    def process(self, demand, skill_index_content=None, model: str = None):
         """
-        Process a human demand
-        
-        Args:
-            demand: Human-readable demand string
-            skill_index_content: Optional skill index content
-            
-        Returns:
-            dict with decomposition result
+        Process a human demand.
+        If model is 'gpt' and OPENAI_API_KEY set, use LLM; else keyword matching.
         """
         if skill_index_content:
             self.decomposer.load_skill_index(skill_index_content)
         
-        decomposed = self.decomposer.decompose(demand)
+        decomposed = []
+        if model and model.lower() in ("gpt", "chutes", "llm"):
+            decomposed = _decompose_llm(demand, model=model)
+        if not decomposed:
+            decomposed = self.decomposer.decompose(demand)
         
         return {
             "version": self.version,

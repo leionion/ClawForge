@@ -1,0 +1,23 @@
+[ui]
+hideTopBar = true
+
+[theme]
+primaryColor = "#22d3ee"
+backgroundColor = "#050608"
+secondaryBackgroundColor = "#0d1117"
+textColor = "#f0f6fc"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8503
+enableXsrfProtection = true
+maxUploadSize = 200
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = true
+showSidebarNavigation = false

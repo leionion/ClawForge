@@ -10,15 +10,27 @@ ClawForge bridges natural language and executable AI capabilities. Describe what
 
 ---
 
-## 🎯 Vision
+## 🖥️ Demo
 
-We are building the **default platform for customizable AI trading agents**. Our mission:
+<p align="center">
+  <img src="media/web-dashboard.gif" alt="ClawForge Dashboard" width="800" />
+</p>
 
-- **Democratize AI agent development** — Make it possible for traders and developers to build, extend, and deploy customized OpenClaw agents without deep infrastructure work
-- **Unify trading workflows** — One interface for stocks, crypto, prediction markets, on-chain intelligence, and automation
-- **Open collaboration** — Grow a community of contributors who build, share, and improve skills and agents together
+*Skill Forge, Chat, BankrBot, Polyclaw, Alpaca, Whale Tracking, DCA, Price Alerts, Portfolio — one unified AI trading terminal.*
 
-ClawForge is not a closed product. It is an **actively developed open platform** designed for extension, contribution, and collaboration.
+---
+
+## 🎯 Our Mission
+
+**We exist to collaborate with traders and developers to build customized AI trading agents and bots.**
+
+Our goal is not just a product — it's a **shared platform** where:
+
+- **Traders** automate strategies, backtest ideas, and deploy agents without deep coding
+- **Developers** extend skills, integrate new exchanges, and ship custom agents fast
+- **Everyone** benefits from a growing ecosystem of open, reusable AI capabilities
+
+ClawForge is **actively developed** and designed for **collaboration**. We want to **work together** with you to build the AI trading tools you actually need.
 
 ---
 
@@ -88,27 +100,19 @@ streamlit run web_app.py --server.port 8503
 
 ---
 
-## 🤝 Collaborate With Us
+## 🤝 Let's Work Together
 
-We are **actively looking for collaborators** who want to build customized OpenClaw AI agents.
+**Our total purpose is to collaborate with potential traders and developers to build customized AI agents and trading bots.**
 
-Whether you are a:
-- **Trader** wanting to automate strategies
-- **Developer** building new skills or agents
-- **Researcher** exploring LLM-based decomposition
-- **Contributor** fixing bugs or improving docs
+Whether you want to:
+- **Automate your strategies** with an AI agent
+- **Build a custom trading bot** for your use case
+- **Add new skills** or integrate new exchanges
+- **Contribute** to the platform and roadmap
 
-— we want to hear from you.
+— we want to work with you.
 
-### Get in Touch
-
-| Platform | Link |
-|----------|------|
-| **GitHub** | [@leionion](https://github.com/leionion) |
-| **Email** | j.ohnceballos0716@gmail.com |
-
-**Have a mind to collaborate and build new customized AI agents together?**  
-Reach out via GitHub (Issues, Discussions, or DM) or the links above. We respond to serious proposals and are open to new project ideas, skill contributions, and long-term collaboration.
+**Reach out:** Visit our [GitHub profile](https://github.com/leionion) for Twitter, Telegram, and other social links. Open Issues, start Discussions, or DM — we respond to serious collaboration proposals and are open to new project ideas, skill contributions, and long-term partnerships.
 
 ---
 

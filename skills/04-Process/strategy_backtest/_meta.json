@@ -1,0 +1,12 @@
+{
+  "openclaw": {
+    "emoji": "📈",
+    "category": "automation",
+    "tags": ["trading", "backtest", "strategy", "quant", "stock", "performance"]
+  },
+  "contributor": "MetaSkillBase",
+  "source": "openclaw_community",
+  "related_skills": ["crypto-wallet", "hhxg-top-hhxg-python", "session-memory"],
+  "inputs": ["ohlcv_data", "strategy_config"],
+  "outputs": ["metrics", "trades"]
+}

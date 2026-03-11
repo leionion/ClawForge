@@ -10,4 +10,8 @@ All meta skills and usage statistics in this repository.
 - OpenClaw Compatible: Yes
 
 ### Initial Index
-(To be filled after skills are added)
+
+#### 04-Process
+| Skill | Contributor | Usage | OpenClaw |
+|-------|-------------|-------|----------|
+| strategy_backtest | MetaSkillBase | 0 | Yes |

@@ -69,6 +69,12 @@ class Decomposer:
             "lock": ["lock"],
             "terminal": ["terminal"],
             "input source": ["input_source"],
+            # 04-Process: trading & quant
+            "backtest": ["strategy_backtest"],
+            "backtesting": ["strategy_backtest"],
+            "trading strategy": ["strategy_backtest"],
+            "quantitative": ["strategy_backtest"],
+            "stock trading": ["strategy_backtest"],
         }
         
         for keyword, skills in skill_keywords.items():
@@ -136,6 +142,10 @@ class CutterEngine:
             "decomposed": decomposed,
             "markdown": self.decomposer.to_markdown(demand, decomposed)
         }
+
+
+# Alias for __init__.py
+Cutter = CutterEngine
 
 
 # CLI interface

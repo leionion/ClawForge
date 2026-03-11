@@ -1,0 +1,12 @@
+{
+  "openclaw": {
+    "emoji": "💾",
+    "category": "automation",
+    "tags": ["memory", "backup", "restore", "session-memory", "disaster-recovery"]
+  },
+  "contributor": "MetaSkillBase",
+  "source": "openclaw_community",
+  "related_skills": ["session-memory", "file-organizer", "calendar"],
+  "inputs": ["source_path", "backup_dir", "retention_count"],
+  "outputs": ["backup_path", "backup_list", "restore_status"]
+}

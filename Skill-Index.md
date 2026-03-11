@@ -15,3 +15,4 @@ All meta skills and usage statistics in this repository.
 | Skill | Contributor | Usage | OpenClaw |
 |-------|-------------|-------|----------|
 | strategy_backtest | MetaSkillBase | 0 | Yes |
+| memory_backup | MetaSkillBase | 0 | Yes |

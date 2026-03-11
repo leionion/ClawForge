@@ -75,6 +75,11 @@ class Decomposer:
             "trading strategy": ["strategy_backtest"],
             "quantitative": ["strategy_backtest"],
             "stock trading": ["strategy_backtest"],
+            # 04-Process: memory backup
+            "memory backup": ["memory_backup"],
+            "memory restore": ["memory_backup"],
+            "backup memory": ["memory_backup"],
+            "scheduled backup": ["memory_backup"],
         }
         
         for keyword, skills in skill_keywords.items():

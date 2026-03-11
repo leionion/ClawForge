@@ -46,7 +46,7 @@ ClawForge is not a closed product. It is an **actively developed open platform**
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/Rezzecup/ClawForge.git
+git clone https://github.com/leionion/ClawForge.git
 cd ClawForge
 pip install -e .
 cp .env.example .env   # Add GROQ_API_KEY (free at console.groq.com)
@@ -104,9 +104,8 @@ Whether you are a:
 
 | Platform | Link |
 |----------|------|
-| **GitHub** | [@Rezzecup](https://github.com/Rezzecup) |
-| **Twitter/X** | [@chain_sats](https://twitter.com/chain_sats) |
-| **Telegram** | [AuraTerminal](https://t.me/AuraTerminal) |
+| **GitHub** | [@leionion](https://github.com/leionion) |
+| **Email** | j.ohnceballos0716@gmail.com |
 
 **Have a mind to collaborate and build new customized AI agents together?**  
 Reach out via GitHub (Issues, Discussions, or DM) or the links above. We respond to serious proposals and are open to new project ideas, skill contributions, and long-term collaboration.

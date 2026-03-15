@@ -2,10 +2,6 @@
 
 **AI Trading Platform — Skill Forge, Chat, BankrBot, Polyclaw, Alpaca, Kalshi, Whale Tracking, Portfolio. Powered by OpenClaw.**
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-ECOSYSTEM-blue)](https://openclaw.ai)
-[![Python](https://img.shields.io/badge/Python-3.10+-green)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/UI-Streamlit-red)](https://streamlit.io)
-
 ClawForge bridges natural language and executable AI capabilities. Describe what you want — backtest a strategy, backup memory, automate workflows, trade across stocks and crypto — and get it done with **OpenClaw** agents and the **Skill Forge** demand decomposition engine.
 
 ---

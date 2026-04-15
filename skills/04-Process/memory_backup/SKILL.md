@@ -1,37 +1,70 @@
-# memory_backup - 内存备份与恢复
+---
+name: memory-backup
+description: "Creates scheduled tar.gz backups of agent memory or chat history, lists existing backup snapshots, and restores from a previous backup point with automatic retention policy. Use when the user asks to back up, export, save, snapshot, or restore chat history, conversation logs, agent memory, or session data."
+---
 
-**功能**: 定时备份 Memory 聊天记录并支持恢复。满足 Demand #2: Scheduled Memory Backup and Restore。
+# memory-backup — Agent Memory Backup & Restore
 
-**用法**:
+Creates compressed backups of agent memory/chat history and restores from previous snapshots. Supports configurable retention policies and scheduled execution via cron.
+
+## Usage
+
 ```bash
-# 手动备份 (可由 calendar/cron 定时触发)
-python3 memory_backup.py backup [--source ~/.agent-memory] [--backup-dir ~/.agent-memory-backups] [--retention 10]
+# Back up agent memory (default source: ~/.agent-memory)
+python3 memory_backup.py backup
 
-# 列出所有备份点
-python3 memory_backup.py list [--backup-dir ~/.agent-memory-backups]
+# Back up a custom source with retention of 5 snapshots
+python3 memory_backup.py backup --source ~/my-memory --retention 5
 
-# 从指定备份恢复
-python3 memory_backup.py restore --restore-from <path> [--restore-to ~/.agent-memory]
+# List all available backup points
+python3 memory_backup.py list
+
+# Restore from a specific backup
+python3 memory_backup.py restore --restore-from ~/.agent-memory-backups/memory_backup_20240115_120000.tar.gz
 ```
 
-**参数**:
-- `--source`: 内存数据源 (session-memory 默认 ~/.agent-memory)
-- `--backup-dir`: 备份存放目录
-- `--retention`: 保留最近 N 个备份 (0=全部保留)
-- `--restore-from`: 要恢复的备份文件路径
-- `--restore-to`: 恢复目标目录
+## Parameters
 
-**输出** (JSON):
-- backup: `{status, path, retention}`
-- list: `{backups: [{path, name, created}], count}`
-- restore: `{status, restored_to}`
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--source` | `~/.agent-memory` | Memory source directory or file |
+| `--backup-dir` | `~/.agent-memory-backups` | Where backups are stored |
+| `--retention` | `10` | Keep N most recent backups (0 = keep all) |
+| `--restore-from` | — | Backup file path (required for restore) |
+| `--restore-to` | `~/.agent-memory` | Restore destination |
+| `--output` | `json` | Output format (`json` or `print`) |
 
-**与现有技能组合** (Related Skills):
-- 数据: `session-memory` (读写) → 本技能备份/恢复
-- 调度: `calendar` → 定时触发 backup
-- 文件: `file-organizer` → 备份文件管理
+## Output examples
 
-**定时示例** (cron):
+**Backup:**
+```json
+{"status": "ok", "path": "/Users/you/.agent-memory-backups/memory_backup_20240115_120000.tar.gz", "retention": 10}
 ```
+
+**List:**
+```json
+{"backups": [{"path": "...", "name": "memory_backup_20240115_120000.tar.gz", "created": "2024-01-15T12:00:00"}], "count": 1}
+```
+
+**Restore:**
+```json
+{"status": "ok", "restored_to": "/Users/you/.agent-memory"}
+```
+
+## Scheduled backups (cron)
+
+```cron
 0 */6 * * * cd /path/to/skill && python3 memory_backup.py backup
 ```
+
+## Error handling
+
+- **Source not found**: returns `{"error": "Source not found: <path>"}`
+- **Missing --restore-from**: returns `{"error": "--restore-from required for restore"}`
+- **Restore overwrites destination**: existing files at restore target are replaced — back up first if uncertain
+
+## Related skills
+
+- **session-memory**: the data source this skill backs up
+- **calendar**: trigger scheduled backups
+- **file-organizer**: manage backup files

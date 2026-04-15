@@ -1,30 +1,74 @@
-# strategy_backtest - 策略回测
+---
+name: strategy-backtest
+description: "Runs SMA crossover backtests on historical OHLCV/candlestick data, calculating total return, Sharpe ratio, max drawdown, win rate, and trade log. Supports CSV files and JSON input with automatic AKShare/hhxg column normalization. Use when the user asks to backtest a trading strategy, evaluate strategy performance on historical price data, run quantitative analysis, or mentions OHLCV, candlestick data, or equity curves."
+---
 
-**功能**: 对历史OHLCV数据运行策略回测，返回绩效指标。满足 Demand #3: Quantitative Stock Trading Skill (backtesting first).
+# strategy-backtest — Quantitative Strategy Backtesting
 
-**用法**:
+Runs strategy backtests on historical OHLCV data and returns performance metrics as JSON. Supports SMA crossover strategy with configurable fast/slow periods.
+
+## Usage
+
 ```bash
-# 演示模式 (无参数使用内置样本)
+# Demo mode — uses built-in sample_ohlcv.csv
 python3 strategy_backtest.py
 
-# 指定数据
-python3 strategy_backtest.py --data <path_or_json> [--strategy sma_crossover] [--fast 5] [--slow 20]
+# Backtest with custom CSV data
+python3 strategy_backtest.py --data path/to/ohlcv.csv
+
+# Backtest with JSON string input
+python3 strategy_backtest.py --data '[{"open":10,"high":11,"low":9,"close":10.5,"volume":100}]'
+
+# Custom SMA periods
+python3 strategy_backtest.py --data prices.csv --fast 10 --slow 30
+
+# Human-readable output
+python3 strategy_backtest.py --data prices.csv --output print
 ```
 
-**输入**:
-- `--data`: OHLCV 数据路径 (CSV) 或 JSON。可省略则使用 sample_ohlcv.csv 演示
-- 支持列名: `open/high/low/close/volume` 或 AKShare/hhxg: `开盘/收盘/最高/最低/成交量/日期`
-- `--strategy`: 策略类型，默认 `sma_crossover`
-- `--fast`, `--slow`: SMA 周期 (sma_crossover)
+## Parameters
 
-**输出** (JSON，可传入 session-memory):
-- `total_return`: 总收益率
-- `sharpe_ratio`: 夏普比率
-- `max_drawdown`: 最大回撤
-- `win_rate`: 胜率
-- `trade_count`: 交易次数
-- `trades`: 交易列表
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--data` | `sample_ohlcv.csv` | CSV path or JSON string (OHLCV) |
+| `--strategy` | `sma_crossover` | Strategy type |
+| `--fast` | `5` | Fast SMA period |
+| `--slow` | `20` | Slow SMA period |
+| `--output` | `json` | Output format (`json` or `print`) |
 
-**与现有技能组合** (Related Skills):
-- 数据: `hhxg-top-hhxg-python` (A 股 Niceck) → 输出 CSV/JSON → 本技能
-- 历史: `session-memory` ← 本技能 metrics
+Supports column names in English (`open/high/low/close/volume`) or Chinese AKShare format (`开盘/收盘/最高/最低/成交量/日期`).
+
+## Example output
+
+```json
+{
+  "total_return": 0.0523,
+  "sharpe_ratio": 1.2345,
+  "max_drawdown": -0.0812,
+  "win_rate": 0.6,
+  "trade_count": 10,
+  "trades": [
+    {"date": "2024-01-15", "action": "buy", "price": 150.25},
+    {"date": "2024-02-01", "action": "sell", "price": 158.50, "pnl": 0.0549}
+  ]
+}
+```
+
+## Error handling
+
+- **Missing pandas**: prints `{"error": "pandas required: pip install pandas"}`
+- **Missing columns**: reports which OHLCV columns are absent
+- **Insufficient data**: returns error if fewer rows than the slow SMA window
+- **Unknown strategy**: reports the unrecognized strategy name
+
+## Programmatic API
+
+```python
+from strategy_backtest import run_backtest
+metrics = run_backtest("prices.csv", strategy="sma_crossover", fast=5, slow=20)
+```
+
+## Related skills
+
+- **hhxg-top-hhxg-python**: fetch A-share OHLCV data → feed into this skill
+- **session-memory**: store backtest metrics for later comparison

@@ -1,39 +1,35 @@
-# mac_finder - Mac目录操作
+---
+name: mac-finder
+description: "Opens macOS Finder at a specified directory path, with tilde expansion and common-directory shortcuts. Use when the user asks to open a folder, navigate to a directory, browse files, show a path in Finder, or open Downloads/Desktop/Documents on macOS."
+---
 
-**版本:** 1.0
+# mac-finder — Open Finder at a Directory
 
-**描述:** 打开Finder并定位到指定目录
+Opens Finder and navigates to a specified directory path. Supports `~` expansion and validates that the path exists before opening.
 
-## 功能
-
-- 在Finder中打开指定目录
-- 支持~展开为用户目录
-- 提供常用目录快捷选择
-
-## 使用方法
+## Usage
 
 ```bash
-# 打开指定目录
-python3 mac_finder.py "目录路径"
-
-# 示例
+# Open a specific directory in Finder
 python3 mac_finder.py "~/Downloads"
 python3 mac_finder.py "/Users/benson/Desktop"
 python3 mac_finder.py "/Applications"
 ```
 
-## 常用目录
+## Common directories
 
-| 名称 | 路径 |
+| Name | Path |
 |------|------|
-| 桌面 | ~/Desktop |
-| 下载 | ~/Downloads |
-| 文档 | ~/Documents |
-| 图片 | ~/Pictures |
-| 音乐 | ~/Music |
-| 影片 | ~/Movies |
-| 应用程序 | /Applications |
+| Desktop | ~/Desktop |
+| Downloads | ~/Downloads |
+| Documents | ~/Documents |
+| Pictures | ~/Pictures |
+| Music | ~/Music |
+| Movies | ~/Movies |
+| Applications | /Applications |
 
----
+## How it works
 
-**平台:** macOS
+- Expands `~` to the user's home directory via `os.path.expanduser`
+- Validates that the path exists and is a directory
+- Opens the directory with `open` and activates Finder via `osascript`

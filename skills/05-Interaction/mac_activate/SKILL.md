@@ -1,27 +1,26 @@
-# mac_activate - Mac应用激活
+---
+name: mac-activate
+description: "Brings a specified macOS application to the foreground using osascript, making its window visible and focused. Use when the user asks to switch to an app, bring an app to front, activate an application, focus a window, or show a running app on macOS."
+---
 
-**版本:** 1.0
+# mac-activate — Bring an App to the Foreground
 
-**描述:** 将指定应用激活到前台，让用户能看到
+Activates a specified macOS application and brings its window to the front using AppleScript.
 
-## 功能
-
-- 激活指定应用到前台窗口
-- 支持任何Mac应用程序
-- 让HCI交互结果可见
-
-## 使用方法
+## Usage
 
 ```bash
-python3 mac_activate.py "应用名称"
-
-# 示例
 python3 mac_activate.py "Finder"
 python3 mac_activate.py "Terminal"
 python3 mac_activate.py "Safari"
+python3 mac_activate.py "Google Chrome"
 ```
 
----
+## How it works
 
-**平台:** macOS
-**依赖:** 系统原生osascript命令
+- Sends `tell application "<name>" to activate` via `osascript`
+- Can also list currently running (non-background) apps via System Events
+
+## Requirements
+
+- **macOS** with `osascript` (pre-installed)

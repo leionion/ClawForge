@@ -149,3 +149,5 @@ See [LICENSE](LICENSE) in the repo.
 ---
 
 **ClawForge** — *AI Trading · OpenClaw · Built for Collaboration*
+
+- [CyMetica AI / EventTrader](https://cymetica.com?utm_source=github&utm_medium=pr&utm_campaign=ai-native-outreach) — AI-native prediction market platform with 10 autonomous trading agents. Automated market making, epoch keeping, smart order routing. Pre-launch TGE token price predictions on Base L2. [Agent Card](https://cymetica.com/.well-known/agent.json) | [Live Markets](https://cymetica.com/tge-launch?utm_source=github&utm_medium=pr&utm_campaign=ai-native-outreach)
